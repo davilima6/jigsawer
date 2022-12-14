@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc -p tsconfig.prod.json && vite build",
+    "preview": "vite preview",
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "react": "^18.2.0",
