@@ -1,0 +1,10 @@
+.answer-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.answer-wrapper button {
+    background: var(--text-bg);
+    color: var(--text-fg);
+}
