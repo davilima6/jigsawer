@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Answer from '../Answer';
 import Loading from '../Loading';
 import Question from '../Question';
@@ -6,15 +8,18 @@ import { useChallenges } from './useChallenges';
 import './Challenge.css';
 
 type Props = {
+  disabled: boolean;
   onHit: () => void;
   onMiss: () => void;
+  onGameOver: () => void;
 };
 
-function Challenge({ onHit, onMiss }: Props) {
+function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
+  const [key, setKey] = useState(0);
   const { loading, error, value: challenges } = useChallenges();
   const challenge = challenges?.[0];
 
-  async function handleAnswer(answer: string) {
+  async function handleAnswer(answer: string): Promise<void> {
     const hashedAnswer = await digestMessage(answer.toLowerCase());
 
     if (hashedAnswer === challenge?.answerSha1) {
@@ -22,6 +27,11 @@ function Challenge({ onHit, onMiss }: Props) {
     } else {
       onMiss();
     }
+  }
+
+  function handleGameOver(): void {
+    setKey((keyCur) => keyCur + 1);
+    onGameOver();
   }
 
   if (loading) {
@@ -38,11 +48,11 @@ function Challenge({ onHit, onMiss }: Props) {
   }
 
   return (
-    <main>
+    <main key={key}>
       {challenge ? (
         <>
           <Question question={challenge.question} />
-          <Answer onAnswer={handleAnswer} />
+          <Answer onSubmit={handleAnswer} onGameOver={handleGameOver} disabled={disabled} />
         </>
       ) : (
         <Loading />
