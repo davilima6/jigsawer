@@ -1,7 +1,7 @@
 import './Loading.css';
 
 function Loading() {
-  return <div>Loading&hellip;</div>;
+  return <div className="loading-wrapper">Loading&hellip;</div>;
 }
 
 export default Loading;

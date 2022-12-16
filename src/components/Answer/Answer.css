@@ -4,7 +4,21 @@
     gap: 1rem;
 }
 
+.answer-wrapper input {
+    padding: 0.25rem 0.5rem;
+}
+
 .answer-wrapper button {
-    background: var(--text-bg);
+    background-color: var(--text-bg);
+    border: 1px solid var(--text-fg);
     color: var(--text-fg);
+    padding: 0.25rem 1rem;
+}
+
+.answer-wrapper .submit {
+    background-color: #008000;
+}
+
+.answer-wrapper .reset {
+    background-color: #ff0000;
 }

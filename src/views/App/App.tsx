@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import Challenge from '../../components/Challenge';
 import Status from '../../components/Status';
 import './App.css';
@@ -30,10 +31,10 @@ function App() {
   const disabled = chancesLeft === 0;
 
   return (
-    <>
+    <div className="app-wrapper">
       <Challenge onHit={handleHit} onMiss={handleMiss} onGameOver={handleGameOver} disabled={disabled} />
       <Status chancesLeft={chancesLeft} points={points} />
-    </>
+    </div>
   );
 }
 

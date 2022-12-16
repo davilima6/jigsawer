@@ -35,12 +35,16 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
   }
 
   if (loading) {
-    return <Loading />;
+    return (
+      <main className="challenge-wrapper">
+        <Loading />
+      </main>
+    );
   }
 
   if (error) {
     return (
-      <main>
+      <main className="challenge-wrapper">
         <h2>An error has ocurred:</h2>
         <blockquote>{error}</blockquote>
       </main>
@@ -48,7 +52,7 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
   }
 
   return (
-    <main key={key}>
+    <main key={key} className="challenge-wrapper">
       {challenge ? (
         <>
           <Question question={challenge.question} />

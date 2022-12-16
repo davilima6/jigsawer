@@ -9,7 +9,7 @@ type Props = {
 
 function Status({ chancesLeft, points }: Props) {
   return (
-    <aside>
+    <aside className="status-wrapper">
       <Score amount={points} />
       <ChancesLeft amount={chancesLeft} />
     </aside>
