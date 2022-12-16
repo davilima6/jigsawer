@@ -25,7 +25,13 @@ export function useChallenges(): QueryResult<Challenge[]> {
 
       try {
         const data = await fetch(API_URL);
-        const { questions } = (await data.json()) as ChallengesResponse;
+        const json = await data.json();
+
+        if (!data.ok) {
+          throw new Error(json);
+        }
+
+        const { questions } = json as ChallengesResponse;
 
         setChallenges(questions);
       } catch (e) {
