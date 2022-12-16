@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import './Answer.css';
 
 type Props = {
@@ -24,8 +25,8 @@ function Answer({ disabled, onSubmit, onGameOver }: Props) {
       inputRef.current?.focus();
     }
 
-
-    const data = new FormData(event.currentTarget);
+    const formEl = event.currentTarget;
+    const data = new FormData(formEl);
     const input = data.get(INPUT_NAME);
 
     if (input === null || input instanceof File || input.trim() === '') {
@@ -33,6 +34,7 @@ function Answer({ disabled, onSubmit, onGameOver }: Props) {
     }
 
     onSubmit(input.trim());
+    formEl.reset();
   }
 
   const buttonLabel = disabled ? BUTTON_RESET_LABEL : BUTTON_SUBMIT_LABEL;
