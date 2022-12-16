@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import './Answer.css';
 
 type Props = {
@@ -11,13 +12,18 @@ const BUTTON_RESET_LABEL = 'Try again';
 const BUTTON_SUBMIT_LABEL = 'Check answer';
 
 function Answer({ disabled, onSubmit, onGameOver }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
 
     if (disabled) {
       onGameOver();
       return;
+    } else {
+      inputRef.current?.focus();
     }
+
 
     const data = new FormData(event.currentTarget);
     const input = data.get(INPUT_NAME);
@@ -36,7 +42,14 @@ function Answer({ disabled, onSubmit, onGameOver }: Props) {
     <section className="answer-wrapper">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label htmlFor={INPUT_NAME}>
-          <input name={INPUT_NAME} id={INPUT_NAME} disabled={disabled} placeholder="Type your answer here" />
+          <input
+            name={INPUT_NAME}
+            id={INPUT_NAME}
+            disabled={disabled}
+            ref={inputRef}
+            autoFocus
+            placeholder="Type your answer here"
+          />
         </label>
         <button className={buttonClassName}>{buttonLabel}</button>
       </form>
