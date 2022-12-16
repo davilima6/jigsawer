@@ -1,0 +1,24 @@
+.challenge-wrapper {
+    align-items: center;
+    border: 1px solid var(--text-fg);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.challenge-wrapper blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 0 auto 3rem;
+}
+
+.challenge-wrapper blockquote::before {
+    content: "“"
+}
+
+.challenge-wrapper blockquote::after {
+    content: "”"
+}

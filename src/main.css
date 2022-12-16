@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --color-primary: #242424;
   --color-secondary: #fafafa;
+  --color-tertiary: #1a1a1a;
 
   --text-bg: var(--color-secondary);
   --text-fg: var(--color-primary);
@@ -29,7 +34,7 @@ a:hover {
 }
 
 button {
-  background-color: #1a1a1a;
+  background-color: var(--color-tertiary);
 }
 
 @media (prefers-color-scheme: dark) {

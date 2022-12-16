@@ -1,0 +1,10 @@
+.status-wrapper {
+    border: 1px solid var(--text-fg);
+    border-radius: 5px;
+    display: flex;
+    flex-basis: 200px;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 1rem;
+}
