@@ -15,7 +15,6 @@ type Props = {
 };
 
 function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
-  const [key, setKey] = useState(0);
   const { loading, error, value: challenges } = useChallenges();
   const challenge = challenges?.[0];
 
@@ -27,11 +26,6 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
     } else {
       onMiss();
     }
-  }
-
-  function handleGameOver(): void {
-    setKey((keyCur) => keyCur + 1);
-    onGameOver();
   }
 
   if (loading) {
@@ -52,11 +46,11 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
   }
 
   return (
-    <main key={key} className="challenge-wrapper">
+    <main className="challenge-wrapper">
       {challenge ? (
         <>
           <Question question={challenge.question} />
-          <Answer onSubmit={handleAnswer} onGameOver={handleGameOver} disabled={disabled} />
+          <Answer onSubmit={handleAnswer} onGameOver={onGameOver} disabled={disabled} />
         </>
       ) : (
         <Loading />
