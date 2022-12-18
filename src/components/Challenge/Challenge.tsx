@@ -1,4 +1,5 @@
 import Answer from '../Answer';
+import GameOver from '../GameOver';
 import Loading from '../Loading';
 import Question from '../Question';
 import { digestMessage } from './Challenge.utils';
@@ -50,14 +51,8 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
 
   return (
     <main className="challenge-wrapper">
-      {challenge ? (
-        <>
-          <Question question={challenge.question} />
-          <Answer onSubmit={handleAnswer} onGameOver={onGameOver} disabled={disabled} />
-        </>
-      ) : (
-        <Loading />
-      )}
+      {!disabled && challenge ? <Question question={challenge.question} /> : <GameOver />}
+      <Answer onSubmit={handleAnswer} onGameOver={onGameOver} disabled={disabled} />
     </main>
   );
 }
