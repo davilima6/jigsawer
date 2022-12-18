@@ -1,6 +1,13 @@
+export type Digest = string;
+
 export type Challenge = {
   question: string;
-  answerSha1: string;
+  answerSha1: Digest;
+  isAnswered?: boolean;
 };
 
-export type Digest = string;
+export type ChallengesData = {
+  questions: Challenge[];
+};
+
+export type ChallengesMap = Map<Digest, Challenge>;

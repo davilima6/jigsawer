@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
 import Answer from '../Answer';
 import Loading from '../Loading';
 import Question from '../Question';
 import { digestMessage } from './Challenge.utils';
-import { useChallenges } from './useChallenges';
+import { useChallenge } from './useChallenge';
 import './Challenge.css';
 
 type Props = {
@@ -15,13 +13,18 @@ type Props = {
 };
 
 function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
-  const { loading, error, value: challenges } = useChallenges();
-  const challenge = challenges?.[0];
+  const { loading, error, value: challenge } = useChallenge();
 
   async function handleAnswer(answer: string): Promise<void> {
+    if (challenge === undefined) {
+      return;
+    }
+
+    challenge.isAnswered = true;
+
     const hashedAnswer = await digestMessage(answer.toLowerCase());
 
-    if (hashedAnswer === challenge?.answerSha1) {
+    if (hashedAnswer === challenge.answerSha1) {
       onHit();
     } else {
       onMiss();
