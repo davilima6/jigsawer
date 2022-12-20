@@ -50,12 +50,24 @@ function Challenge({ disabled, onHit, onMiss, onGameOver, score }: Props) {
     );
   }
 
-  return (
-    <main className="challenge-wrapper">
-      {!disabled && challenge ? <Question question={challenge.question} /> : <GameOver score={score} />}
-      <Answer onSubmit={handleAnswer} onGameOver={onGameOver} disabled={disabled} />
-    </main>
-  );
+  if (disabled) {
+    return (
+      <main className="challenge-wrapper">
+        <GameOver onGameOver={onGameOver} score={score} />
+      </main>
+    );
+  }
+
+  if (challenge) {
+    return (
+      <main className="challenge-wrapper">
+        <Question question={challenge.question} />
+        <Answer onSubmit={handleAnswer} />
+      </main>
+    );
+  }
+
+  return null;
 }
 
 export default Challenge;

@@ -11,17 +11,10 @@
     padding: 0.25rem 0.5rem;
 }
 
-.answer-wrapper button {
-    background-color: var(--text-bg);
+.answer-wrapper .submit {
+    background-color: #008000;
     border: 1px solid var(--text-fg);
     color: var(--color-secondary);
     padding: 0.25rem 1rem;
-}
-
-.answer-wrapper .submit {
-    background-color: #008000;
-}
-
-.answer-wrapper .reset {
-    background-color: #ff0000;
+    width: 10rem;
 }
