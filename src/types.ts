@@ -11,3 +11,5 @@ export type ChallengesData = {
 };
 
 export type ChallengesMap = Map<Digest, Challenge>;
+
+export type Theme = "light" | "dark"

@@ -11,6 +11,7 @@ function Status({ chancesLeft, points }: Props) {
   return (
     <aside className="status-wrapper">
       <Score amount={points} />
+      <hr />
       <ChancesLeft amount={chancesLeft} />
     </aside>
   );
