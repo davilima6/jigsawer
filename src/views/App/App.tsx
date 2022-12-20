@@ -24,7 +24,7 @@ function App() {
     setChancesLeft((prev) => prev - 1);
   }
 
-  function handleGameOver(): void {
+  function handleTryAgain(): void {
     setScore(INITIAL_SCORE);
     setChancesLeft(INITIAL_CHANCES_LEFT);
   }
@@ -34,16 +34,16 @@ function App() {
     document.body.dataset.theme = theme === 'light' ? 'dark' : 'light';
   }
 
-  const disabled = chancesLeft === 0;
+  const isGameOver = chancesLeft === 0;
 
   return (
     <div className="app-wrapper">
       <ThemeToggler onToggle={handleThemeToggle} />
       <Challenge
-        disabled={disabled}
-        onGameOver={handleGameOver}
+        isGameOver={isGameOver}
         onHit={handleHit}
         onMiss={handleMiss}
+        onTryAgain={handleTryAgain}
         score={score}
       />
       <Status chancesLeft={chancesLeft} score={score} />
