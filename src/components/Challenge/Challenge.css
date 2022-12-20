@@ -1,7 +1,9 @@
 .challenge-wrapper {
     align-items: center;
+    background-color: var(--text-bg);
     border: 1px solid var(--text-fg);
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    color: var(--text-fg);
     display: flex;
     flex-direction: column;
     flex-grow: 3;
