@@ -7,14 +7,14 @@ import { useChallenge } from './useChallenge';
 import './Challenge.css';
 
 type Props = {
-  disabled: boolean;
+  isGameOver: boolean;
   onHit: () => void;
   onMiss: () => void;
-  onGameOver: () => void;
+  onTryAgain: () => void;
   score: number;
 };
 
-function Challenge({ disabled, onHit, onMiss, onGameOver, score }: Props) {
+function Challenge({ isGameOver, onHit, onMiss, onTryAgain, score }: Props) {
   const { loading, error, value: challenge } = useChallenge();
 
   async function handleAnswer(answer: string): Promise<void> {
@@ -50,10 +50,10 @@ function Challenge({ disabled, onHit, onMiss, onGameOver, score }: Props) {
     );
   }
 
-  if (disabled) {
+  if (isGameOver) {
     return (
       <main className="challenge-wrapper">
-        <GameOver onGameOver={onGameOver} score={score} />
+        <GameOver onTryAgain={onTryAgain} score={score} />
       </main>
     );
   }

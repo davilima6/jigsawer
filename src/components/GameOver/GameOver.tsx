@@ -1,11 +1,11 @@
 import './GameOver.css';
 
 type Props = {
-  onGameOver: () => void;
+  onTryAgain: () => void;
   score: number;
 };
 
-function GameOver({ onGameOver, score }: Props) {
+function GameOver({ onTryAgain, score }: Props) {
   const compliment = score > 0 ? 'Congratulations' : 'Pity';
   const needsPlural = score === 0 || score > 1;
 
@@ -15,7 +15,7 @@ function GameOver({ onGameOver, score }: Props) {
       <p>
         {compliment}, you made {score} point{needsPlural ? 's' : ''}!
       </p>
-      <button className="reset" onClick={onGameOver} autoFocus>
+      <button className="reset" onClick={onTryAgain} autoFocus>
         Try again
       </button>
     </section>
