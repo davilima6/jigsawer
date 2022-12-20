@@ -1,0 +1,7 @@
+.game-over-wrapper .reset {
+    background-color: #ff0000;
+    border: 1px solid var(--text-fg);
+    color: var(--color-secondary);
+    padding: 0.25rem 1rem;
+    width: 10rem;
+}
