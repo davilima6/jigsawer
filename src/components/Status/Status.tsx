@@ -4,13 +4,13 @@ import './Status.css';
 
 type Props = {
   chancesLeft: number;
-  points: number;
+  score: number;
 };
 
-function Status({ chancesLeft, points }: Props) {
+function Status({ chancesLeft, score }: Props) {
   return (
     <aside className="status-wrapper">
-      <Score amount={points} />
+      <Score amount={score} />
       <hr />
       <ChancesLeft amount={chancesLeft} />
     </aside>

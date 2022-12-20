@@ -5,15 +5,15 @@ import Status from '../../components/Status';
 import ThemeToggler from '../../components/ThemeToggler';
 import './App.css';
 
-const INITIAL_POINTS = 0;
+const INITIAL_SCORE = 0;
 const INITIAL_CHANCES_LEFT = 3;
 
 function App() {
-  const [points, setPoints] = useState(INITIAL_POINTS);
+  const [score, setScore] = useState(INITIAL_SCORE);
   const [chancesLeft, setChancesLeft] = useState(INITIAL_CHANCES_LEFT);
 
   function handleHit(): void {
-    setPoints((pointsCur) => pointsCur + 1);
+    setScore((prev) => prev + 1);
   }
 
   function handleMiss(): void {
@@ -21,11 +21,11 @@ function App() {
       return;
     }
 
-    setChancesLeft((chancesLeftCur) => chancesLeftCur - 1);
+    setChancesLeft((prev) => prev - 1);
   }
 
   function handleGameOver(): void {
-    setPoints(INITIAL_POINTS);
+    setScore(INITIAL_SCORE);
     setChancesLeft(INITIAL_CHANCES_LEFT);
   }
 
@@ -39,8 +39,14 @@ function App() {
   return (
     <div className="app-wrapper">
       <ThemeToggler onToggle={handleThemeToggle} />
-      <Challenge onHit={handleHit} onMiss={handleMiss} onGameOver={handleGameOver} disabled={disabled} />
-      <Status chancesLeft={chancesLeft} points={points} />
+      <Challenge
+        disabled={disabled}
+        onGameOver={handleGameOver}
+        onHit={handleHit}
+        onMiss={handleMiss}
+        score={score}
+      />
+      <Status chancesLeft={chancesLeft} score={score} />
     </div>
   );
 }

@@ -11,9 +11,10 @@ type Props = {
   onHit: () => void;
   onMiss: () => void;
   onGameOver: () => void;
+  score: number;
 };
 
-function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
+function Challenge({ disabled, onHit, onMiss, onGameOver, score }: Props) {
   const { loading, error, value: challenge } = useChallenge();
 
   async function handleAnswer(answer: string): Promise<void> {
@@ -43,7 +44,7 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
   if (error) {
     return (
       <main className="challenge-wrapper">
-        <h2>An error has ocurred:</h2>
+        <h1>An error has ocurred:</h1>
         <blockquote>{error}</blockquote>
       </main>
     );
@@ -51,7 +52,7 @@ function Challenge({ disabled, onHit, onMiss, onGameOver }: Props) {
 
   return (
     <main className="challenge-wrapper">
-      {!disabled && challenge ? <Question question={challenge.question} /> : <GameOver />}
+      {!disabled && challenge ? <Question question={challenge.question} /> : <GameOver score={score} />}
       <Answer onSubmit={handleAnswer} onGameOver={onGameOver} disabled={disabled} />
     </main>
   );
