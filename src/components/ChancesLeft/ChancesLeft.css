@@ -1,0 +1,16 @@
+.chances-left-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chances-left-wrapper h3 {
+    color: var(--text-fg);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.chances-left-wrapper span {
+    font-size: 4rem;
+}

@@ -1,0 +1,17 @@
+.score-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score-wrapper h3 {
+    color: var(--text-fg);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.score-wrapper span {
+    color: var(--text-fg);
+    font-size: 4rem;
+}

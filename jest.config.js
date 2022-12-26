@@ -6,6 +6,7 @@ export default {
     '\\.css$': '<rootDir>/src/mocks/styleMock.ts',
   },
   reporters: ['default'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/src/**/*.test.{ts,tsx}'],
   testPathIgnorePatterns: ['/node_modules/'],

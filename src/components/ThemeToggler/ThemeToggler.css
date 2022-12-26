@@ -1,0 +1,36 @@
+.theme-toggler-wrapper {
+    position: fixed;
+    right: 1rem;
+    top: 0.5rem;
+}
+
+.theme-toggler-wrapper input {
+    appearance: none;
+    background-color: var(--text-fg);
+    border: 1px solid var(--text-bg);
+    border-radius: 1rem;
+    cursor: pointer;
+    display: block;
+    height: 1rem;
+    margin: 0;
+    width: 2.5rem;
+}
+
+.theme-toggler-wrapper input::before {
+    background-color: var(--text-bg);
+    border: 1px solid var(--text-fg);
+    border-radius: 50%;
+    box-shadow: var(--text-bg) 0 1px 4px;
+    content: "";
+    height: 1rem;
+    left: 0;
+    position: absolute;
+    top: -1px;
+    width: 1rem;
+}
+
+.theme-toggler-wrapper input:checked::before {
+    background-color: var(--text-bg);
+    box-shadow: var(--text-fg) 0 1px 4px;
+    transform: translateX(1.5rem);
+}

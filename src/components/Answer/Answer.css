@@ -1,0 +1,20 @@
+.answer-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.answer-wrapper input {
+    background-color: var(--text-bg);
+    border: 1px solid var(--text-fg);
+    color: var(--text-fg);
+    padding: 0.25rem 0.5rem;
+}
+
+.answer-wrapper .submit {
+    background-color: #008000;
+    border: 1px solid var(--text-fg);
+    color: var(--color-secondary);
+    padding: 0.25rem 1rem;
+    width: 10rem;
+}
