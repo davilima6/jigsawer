@@ -4,10 +4,12 @@ type Props = {
   amount: number;
 };
 
+export const TITLE = 'Score';
+
 function Score({ amount }: Props) {
   return (
     <section className="score-wrapper">
-      <h3>Score</h3>
+      <h3>{TITLE}</h3>
       <span>{amount}</span>
     </section>
   );

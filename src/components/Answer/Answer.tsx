@@ -7,6 +7,8 @@ type Props = {
 };
 
 const INPUT_NAME = 'answer';
+export const BUTTON_TITLE = 'Check answer';
+export const INPUT_PLACEHOLDER = 'Type your answer here';
 
 function Answer({ onSubmit }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,10 +32,10 @@ function Answer({ onSubmit }: Props) {
   return (
     <section className="answer-wrapper">
       <form onSubmit={handleSubmit} autoComplete="off">
-        <label htmlFor={INPUT_NAME}>
-          <input name={INPUT_NAME} id={INPUT_NAME} ref={inputRef} autoFocus placeholder="Type your answer here" />
+        <label htmlFor={INPUT_NAME} aria-label={INPUT_PLACEHOLDER}>
+          <input name={INPUT_NAME} id={INPUT_NAME} ref={inputRef} placeholder={INPUT_PLACEHOLDER} autoFocus />
         </label>
-        <button className="submit">Check answer</button>
+        <button className="submit">{BUTTON_TITLE}</button>
       </form>
     </section>
   );
