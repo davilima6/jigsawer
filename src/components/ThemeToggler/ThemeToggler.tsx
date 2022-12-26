@@ -7,8 +7,8 @@ type Props = {
 };
 
 const INPUT_NAME = 'theme-toggler';
-const ENABLE_LIGHT_MODE_LABEL = 'Enable day mode';
-const ENABLE_DARK_MODE_LABEL = 'Enable night mode';
+export const ENABLE_LIGHT_MODE_LABEL = 'Enable day mode';
+export const ENABLE_DARK_MODE_LABEL = 'Enable night mode';
 
 function ThemeToggler({ onToggle }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -26,14 +26,15 @@ function ThemeToggler({ onToggle }: Props) {
     }
   }, []);
 
-  function handleClick(): void {
+  function handleClick(event: React.SyntheticEvent): void {
+    event.preventDefault();
     onToggle();
     setInputLabel(inputLabel === ENABLE_LIGHT_MODE_LABEL ? ENABLE_DARK_MODE_LABEL : ENABLE_LIGHT_MODE_LABEL);
   }
 
   return (
-    <div className="theme-toggler-wrapper" role="button" tabIndex={0} onClick={handleClick}>
-      <label htmlFor={INPUT_NAME} aria-label={inputLabel} title={inputLabel}>
+    <div className="theme-toggler-wrapper">
+      <label htmlFor={INPUT_NAME} aria-label={inputLabel} title={inputLabel} onClick={handleClick}>
         <input type="checkbox" id={INPUT_NAME} name={INPUT_NAME} ref={inputRef} />
       </label>
     </div>
